@@ -18,7 +18,7 @@ social: false  # includes social icons at the bottom of the page
 
 Hi there! I am Snehal Raj, a PhD Student at LIP6/CNRS - Sorbonne University - under [Prof. Elham Kashefi](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427) and an Associate Staff Scientist at [QC Ware](https://www.qcware.com/).
 
- I graduated from the University of Oxford in 2022 with a Master's in Advanced Computer Science. My thesis was supervised by [Prof. Aleks Kissinger](https://www.cs.ox.ac.uk/people/aleks.kissinger/) and is available [here](https://www.cs.ox.ac.uk/people/aleks.kissinger/theses/raj-thesis.pdf).
+ I graduated from the [University of Oxford](https://www.cs.ox.ac.uk/) in 2022 with a Master's in Advanced Computer Science. My thesis on improving simulations for Google's supermacy circuits was supervised by [Prof. Aleks Kissinger](https://www.cs.ox.ac.uk/people/aleks.kissinger/) and is available [here](https://www.cs.ox.ac.uk/people/aleks.kissinger/theses/raj-thesis.pdf).
  
-  Before that, I was at [Indian Institute of Technology Kanpur](https://www.iitk.ac.in/) where I majored in Computer Science and Engineering.
+ Before that, I was at [Indian Institute of Technology Kanpur](https://www.iitk.ac.in/) where I majored in Computer Science and Engineering. I worked on Quantum Query Complexity as part of my [bachelor's thesis](https://github.com/SnehalRaj/CS396A/blob/master/Report.pdf)
 
