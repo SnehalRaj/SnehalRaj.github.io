@@ -20,5 +20,7 @@ Hi there! I am Snehal Raj, a PhD Student at LIP6/CNRS - Sorbonne University - un
 
  I graduated from the [University of Oxford](https://www.cs.ox.ac.uk/) in 2022 with a Master's in Advanced Computer Science. My thesis on improving simulations for Google's supermacy circuits was supervised by [Prof. Aleks Kissinger](https://www.cs.ox.ac.uk/people/aleks.kissinger/) and is available [here](https://www.cs.ox.ac.uk/people/aleks.kissinger/theses/raj-thesis.pdf).
  
- Before that, I was at [Indian Institute of Technology Kanpur](https://www.iitk.ac.in/) where I majored in Computer Science and Engineering. I worked on Quantum Query Complexity as part of my [bachelor's thesis](https://github.com/SnehalRaj/CS396A/blob/master/Report.pdf)
+ Before that, I was at [Indian Institute of Technology Kanpur](https://www.iitk.ac.in/) where I majored in Computer Science and Engineering. I worked on Quantum Query Complexity as part of my [bachelor's thesis](https://github.com/SnehalRaj/CS396A/blob/master/Report.pdf).
+
+ In a past life, I was affiliated with [Adobe Research](https://research.adobe.com/) working on [LLMs](https://aclanthology.org/2021.emnlp-main.798/?utm_campaign=%E6%AF%8E%E9%80%B1%20NLP%20%E8%AB%96%E6%96%87&utm_medium=email&utm_source=Revue%20newsletter). 
 
