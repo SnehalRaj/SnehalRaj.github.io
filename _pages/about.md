@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: <a href='https://www.qcware.com/'>QCWARE</a> | <a href='https://www.lip6.fr/?LANG=en'>LIP6</a> | <a href='https://www.sorbonne-universite.fr/'>Sorbonne Universite</a>.
 
 profile:
   align: right
