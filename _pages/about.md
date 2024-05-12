@@ -13,7 +13,7 @@ profile:
 news: false  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
-social: false  # includes social icons at the bottom of the page
+social: true  # includes social icons at the bottom of the page
 ---
 
 Hi there! I am Snehal Raj, a PhD Student at LIP6/CNRS - Sorbonne University - under [Prof. Elham Kashefi](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427) and an Associate Staff Scientist at [QC Ware](https://www.qcware.com/).
