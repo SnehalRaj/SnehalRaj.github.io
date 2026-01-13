@@ -19,7 +19,10 @@ hobbies: true
 
 Hi there! I am Snehal Raj, a CIFRE PhD Student at LIP6/CNRS - Sorbonne University and [QC Ware](https://www.qcware.com/), under [Prof. Elham Kashefi](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427) (academic supervisor) & [Dr. Brian Coyle](https://scholar.google.com/citations?user=zDZuloYAAAAJ&hl=en) (industry supervisor).
 
-My thesis explores: *How can we theoretically study and empirically validate quantum & quantum-inspired algorithms that bridge quantum and classical machine learning?*
+My thesis explores:
+- Theoretical study of quantum & quantum-inspired algorithms
+- Empirical validation of these algorithms
+- Bridging quantum and classical machine learning
 
 I graduated from the [University of Oxford](https://www.cs.ox.ac.uk/) in 2022 with a Master's in Advanced Computer Science. My thesis on improving simulations for Google's supremacy circuits was supervised by [Prof. Aleks Kissinger](https://www.cs.ox.ac.uk/people/aleks.kissinger/) and is available [here](https://www.cs.ox.ac.uk/people/aleks.kissinger/theses/raj-thesis.pdf).
 
