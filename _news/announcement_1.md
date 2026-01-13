@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2025-11-07
 inline: true
 related_posts: false
 ---
 
-A simple inline announcement.
+Our paper **"Training-Efficient Density Quantum Machine Learning"** published in **npj Quantum Information**! [Read it here](https://www.nature.com/articles/s41534-025-01099-6).

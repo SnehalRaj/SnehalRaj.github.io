@@ -1,0 +1,223 @@
+/*******************************************************************************
+ * Talks Page Styles - Card Grid Layout
+ ******************************************************************************/
+
+.talks {
+  margin-top: 2rem;
+
+  h2.year-header {
+    color: var(--global-text-color-light);
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--global-divider-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  .talks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .talk-card {
+    background-color: var(--global-card-bg-color);
+    border: 1px solid var(--global-border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 250ms ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+      border-color: var(--global-theme-color);
+      box-shadow: var(--global-shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .talk-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .conference-logo {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      object-fit: contain;
+      border-radius: 4px;
+      background-color: var(--global-bg-secondary);
+      padding: 4px;
+    }
+
+    .conference-logo-placeholder {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 4px;
+      background-color: var(--global-bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--global-text-color-muted);
+      font-size: 1.25rem;
+    }
+
+    .talk-meta {
+      flex: 1;
+    }
+
+    .talk-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--global-text-color);
+      margin: 0 0 0.25rem 0;
+      line-height: 1.4;
+    }
+
+    .talk-venue {
+      font-size: 0.875rem;
+      color: var(--global-theme-color);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .talk-date {
+      font-size: 0.8rem;
+      color: var(--global-text-color-muted);
+      margin-top: 0.25rem;
+    }
+
+    .talk-location {
+      font-size: 0.8rem;
+      color: var(--global-text-color-light);
+      margin-top: 0.25rem;
+
+      i {
+        margin-right: 0.25rem;
+      }
+    }
+
+    .talk-description {
+      font-size: 0.9rem;
+      color: var(--global-text-color-light);
+      line-height: 1.5;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+
+    .talk-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--global-divider-color);
+
+      a.btn-talk {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        border: 1px solid var(--global-border-color);
+        color: var(--global-text-color);
+        text-decoration: none;
+        transition: all 150ms ease;
+
+        &:hover {
+          border-color: var(--global-theme-color);
+          color: var(--global-theme-color);
+          background-color: var(--global-bg-secondary);
+        }
+
+        i {
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    // Talk type badges
+    .talk-type {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+
+      &.invited {
+        background-color: rgba(#4A90A4, 0.15);
+        color: #4A90A4;
+      }
+      &.contributed {
+        background-color: rgba(#27AE60, 0.15);
+        color: #27AE60;
+      }
+      &.poster {
+        background-color: rgba(#E67E22, 0.15);
+        color: #E67E22;
+      }
+      &.workshop {
+        background-color: rgba(#9B59B6, 0.15);
+        color: #9B59B6;
+      }
+      &.seminar {
+        background-color: rgba(#3498DB, 0.15);
+        color: #3498DB;
+      }
+    }
+  }
+}
+
+// Dark mode adjustments for talk badges
+html[data-theme='dark'] {
+  .talks .talk-card .talk-type {
+    &.invited {
+      background-color: rgba(#7DB8C7, 0.2);
+      color: #7DB8C7;
+    }
+    &.contributed {
+      background-color: rgba(#2ECC71, 0.2);
+      color: #2ECC71;
+    }
+    &.poster {
+      background-color: rgba(#F39C12, 0.2);
+      color: #F39C12;
+    }
+    &.workshop {
+      background-color: rgba(#BB8FCE, 0.2);
+      color: #BB8FCE;
+    }
+    &.seminar {
+      background-color: rgba(#5DADE2, 0.2);
+      color: #5DADE2;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .talks {
+    .talks-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .talk-card {
+      padding: 1rem;
+    }
+  }
+}

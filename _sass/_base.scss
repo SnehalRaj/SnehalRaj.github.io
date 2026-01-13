@@ -305,7 +305,7 @@ blockquote {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    font-size: 2rem;
 
     a {
       i::before {
@@ -1033,4 +1033,115 @@ nav[data-toggle="toc"] {
     margin-bottom: 0;
     padding-top: 0.5rem;
   }
+}
+
+/*******************************************************************************
+ * About Page - Research Interests & Personal Sections
+ ******************************************************************************/
+
+// Section headers
+.about-section {
+  margin-bottom: 2.5rem;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--global-text-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--global-theme-color);
+    display: inline-block;
+  }
+}
+
+// Research interests grid
+.research-interests {
+  display: grid;
+  gap: 1rem;
+
+  .interest-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background-color: var(--global-bg-secondary, #f8f9fa);
+    border-radius: 8px;
+    border-left: 3px solid var(--global-theme-color);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+
+    &:hover {
+      transform: translateX(4px);
+    }
+
+    .interest-icon {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      color: var(--global-theme-color);
+      min-width: 2rem;
+    }
+
+    .interest-content {
+      h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.375rem 0;
+        color: var(--global-text-color);
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: var(--global-text-color-light);
+        margin: 0;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+// Personal/hobbies section
+.personal-section {
+  p {
+    margin-bottom: 1rem;
+    color: var(--global-text-color-light);
+  }
+
+  .hobby-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .hobby-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--global-bg-secondary, #f8f9fa);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      color: var(--global-text-color);
+      transition: all 200ms ease;
+      border: 1px solid transparent;
+
+      i {
+        color: var(--global-theme-color);
+      }
+
+      &:hover {
+        border-color: var(--global-theme-color);
+        background-color: var(--global-card-bg-color);
+      }
+    }
+  }
+}
+
+// Section divider
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--global-divider-color),
+    transparent
+  );
+  margin: 2.5rem 0;
+  border: none;
 }

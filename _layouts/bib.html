@@ -30,7 +30,17 @@
         <!-- Entry bib key -->
         <div id="{{entry.key}}" class="col-sm-8">
         <!-- Title -->
-        <div class="title">{{entry.title}}</div>
+        <div class="title">
+          {%- if entry.html -%}
+            <a href="{{ entry.html }}">{{entry.title}}</a>
+          {%- elsif entry.pdf -%}
+            <a href="{{ entry.pdf }}">{{entry.title}}</a>
+          {%- elsif entry.arxiv -%}
+            <a href="http://arxiv.org/abs/{{ entry.arxiv }}">{{entry.title}}</a>
+          {%- else -%}
+            {{entry.title}}
+          {%- endif -%}
+        </div>
         <!-- Author -->
         <div class="author">
         {% assign author_array_size = entry.author_array | size %}

@@ -1,0 +1,31 @@
+# Talks and Presentations
+# Organized by year, most recent first
+#
+# Talk types: invited, contributed, poster, workshop, seminar
+#
+# To add a new talk:
+# - title: "Your Talk Title"
+#   venue: "Conference Abbreviation"
+#   venue_full: "Full Conference Name"
+#   date: "YYYY-MM-DD"
+#   location: "City, Country"
+#   type: invited|contributed|poster|workshop|seminar
+#   description: "Brief description of the talk."
+#   logo: "conference-logo.png"  # Optional, place in /assets/img/talks/
+#   slides: "URL or path"        # Optional
+#   video: "URL"                 # Optional
+#   paper: "URL or path"         # Optional
+#   poster: "URL or path"        # Optional
+#   code: "URL"                  # Optional
+
+- year: 2024
+  talks:
+    - title: "Training-Efficient Density Quantum Machine Learning"
+      venue: "QTML 2024"
+      venue_full: "Quantum Techniques in Machine Learning"
+      date: "2024-11-20"
+      location: "Melbourne, Australia"
+      type: contributed
+      description: "Presented our work on leveraging density matrices for more efficient training of quantum machine learning models, achieving improved sample complexity compared to traditional quantum neural network approaches."
+      video: "https://www.youtube.com/watch?v=1Dp_U6U6hGQ"
+      paper: "/publications/#coyle2025training"

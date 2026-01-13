@@ -2,25 +2,63 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://www.qcware.com/'>QC WARE</a> | <a href='https://www.lip6.fr/?LANG=en'>LIP6</a> | <a href='https://www.sorbonne-universite.fr/'>Sorbonne Universite</a>.
+subtitle: <a href='https://www.qcware.com/'>QC Ware</a> | <a href='https://www.lip6.fr/?LANG=en'>LIP6</a> | <a href='https://www.sorbonne-universite.fr/'>Sorbonne Universite</a>
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: true # crops the image to make it circular
-  address: 
+  image_circular: true
+  address:
 
-news: false  # includes a list of news items
-latest_posts: false  # includes a list of the newest posts
-selected_papers: false # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+news: true
+latest_posts: false
+selected_papers: true
+social: true
+hobbies: true
 ---
 
-Hi there! I am Snehal Raj, a PhD Student at LIP6/CNRS - Sorbonne University - under [Prof. Elham Kashefi](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427) & [Dr. Brian Coyle](https://scholar.google.com/citations?user=zDZuloYAAAAJ&hl=en) and an Associate Staff Scientist at [QC Ware](https://www.qcware.com/).
+Hi there! I am Snehal Raj, a CIFRE PhD Student at LIP6/CNRS - Sorbonne University and [QC Ware](https://www.qcware.com/), under [Prof. Elham Kashefi](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427) (academic supervisor) & [Dr. Brian Coyle](https://scholar.google.com/citations?user=zDZuloYAAAAJ&hl=en) (industry supervisor).
 
- I graduated from the [University of Oxford](https://www.cs.ox.ac.uk/) in 2022 with a Master's in Advanced Computer Science. My thesis on improving simulations for Google's supermacy circuits was supervised by [Prof. Aleks Kissinger](https://www.cs.ox.ac.uk/people/aleks.kissinger/) and is available [here](https://www.cs.ox.ac.uk/people/aleks.kissinger/theses/raj-thesis.pdf).
- 
- Before that, I was at [Indian Institute of Technology Kanpur](https://www.cse.iitk.ac.in/) where I majored in Computer Science and Engineering. I worked on Quantum Query Complexity as part of my [bachelor's thesis](https://github.com/SnehalRaj/CS396A/blob/master/Report.pdf) and was supervised by [Prof. Rajat Mittal](https://www.cse.iitk.ac.in/users/rmittal/).
+My thesis explores: *How can we theoretically study and empirically validate quantum & quantum-inspired algorithms that bridge quantum and classical machine learning?*
 
- In a past life, I was affiliated with [Adobe Research](https://research.adobe.com/) working on [LLMs](https://aclanthology.org/2021.emnlp-main.798/?utm_campaign=%E6%AF%8E%E9%80%B1%20NLP%20%E8%AB%96%E6%96%87&utm_medium=email&utm_source=Revue%20newsletter). 
+I graduated from the [University of Oxford](https://www.cs.ox.ac.uk/) in 2022 with a Master's in Advanced Computer Science. My thesis on improving simulations for Google's supremacy circuits was supervised by [Prof. Aleks Kissinger](https://www.cs.ox.ac.uk/people/aleks.kissinger/) and is available [here](https://www.cs.ox.ac.uk/people/aleks.kissinger/theses/raj-thesis.pdf).
 
+Before that, I was at [Indian Institute of Technology Kanpur](https://www.cse.iitk.ac.in/) where I majored in Computer Science and Engineering. I worked on Quantum Query Complexity as part of my [bachelor's thesis](https://github.com/SnehalRaj/CS396A/blob/master/Report.pdf) and was supervised by [Prof. Rajat Mittal](https://www.cse.iitk.ac.in/users/rmittal/).
+
+In a past life, I was affiliated with [Adobe Research](https://research.adobe.com/) working on [LLMs](https://aclanthology.org/2021.emnlp-main.798/).
+
+<div class="section-divider"></div>
+
+## Research Interests
+
+<div class="research-interests">
+  <div class="interest-item">
+    <div class="interest-icon">
+      <i class="fas fa-atom"></i>
+    </div>
+    <div class="interest-content">
+      <h4>Quantum Computing</h4>
+      <p>Variational quantum algorithms, quantum machine learning, and near-term quantum applications. Particularly interested in bridging the gap between theoretical quantum advantage and practical implementations on NISQ devices.</p>
+    </div>
+  </div>
+
+  <div class="interest-item">
+    <div class="interest-icon">
+      <i class="fas fa-brain"></i>
+    </div>
+    <div class="interest-content">
+      <h4>Reinforcement Learning</h4>
+      <p>Exploring the intersection of quantum computing and reinforcement learning, including quantum policy optimization and quantum-enhanced exploration strategies.</p>
+    </div>
+  </div>
+
+  <div class="interest-item">
+    <div class="interest-icon">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div class="interest-content">
+      <h4>Large Foundation Models</h4>
+      <p>Parameter-efficient fine-tuning, quantum-inspired adapters for LLMs, and efficient training methods for large-scale models.</p>
+    </div>
+  </div>
+</div>

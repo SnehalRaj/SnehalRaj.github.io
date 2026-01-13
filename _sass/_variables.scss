@@ -1,38 +1,65 @@
 /*******************************************************************************
- * Variables used throughout the theme.
- * To adjust anything, simply edit the variables below and rebuild the theme.
+ * Modern Minimal Theme Variables
+ * Clean, professional academic website color scheme
  ******************************************************************************/
 
+// Primary Colors - Modern Minimal Palette
+$primary-color:        #2C3E50 !default;    // Deep slate blue (professional, minimal)
+$primary-color-light:  #3D5A80 !default;    // Lighter slate for hover states
+$accent-color:         #4A90A4 !default;    // Muted teal accent (subtle, professional)
+$accent-color-light:   #7DB8C7 !default;    // Light teal for backgrounds
 
-// Colors
-$red-color:           #FF3636 !default;
-$red-color-dark:      #B71C1C !default;
-$orange-color:        #F29105 !default;
-$blue-color:          #0076df !default;
-$blue-color-dark:     #00369f !default;
-$cyan-color:          #2698BA !default;
-$light-cyan-color:    lighten($cyan-color, 25%);
-$green-color:         #00ab37 !default;
-$green-color-lime:    #B7D12A !default;
-$green-color-dark:    #009f06 !default;
-$green-color-light:   #ddffdd !default;
-$green-color-bright:  #11D68B !default;
-$purple-color:        #B509AC !default;
-$light-purple-color:  lighten($purple-color, 25%);
-$pink-color:          #f92080 !default;
-$pink-color-light:    #ffdddd !default;
-$yellow-color:        #efcc00 !default;
+// Legacy color aliases (for backward compatibility with al-folio)
+$purple-color:         $primary-color;
+$light-purple-color:   $primary-color-light;
+$cyan-color:           $accent-color;
+$light-cyan-color:     $accent-color-light;
 
-$grey-color:          #828282 !default;
-$grey-color-light:    lighten($grey-color, 40%);
-$grey-color-dark:     #1C1C1D;
-$grey-900:            #212529;
+// Status Colors (keep for functionality)
+$red-color:            #E74C3C !default;
+$red-color-dark:       #C0392B !default;
+$orange-color:         #E67E22 !default;
+$blue-color:           #3498DB !default;
+$blue-color-dark:      #2980B9 !default;
+$green-color:          #27AE60 !default;
+$green-color-lime:     #A8D874 !default;
+$green-color-dark:     #229954 !default;
+$green-color-light:    #D5F5E3 !default;
+$green-color-bright:   #2ECC71 !default;
+$pink-color:           #E91E63 !default;
+$pink-color-light:     #FCE4EC !default;
+$yellow-color:         #F1C40F !default;
 
-$white-color: #ffffff !default;
-$black-color: #000000 !default;
+// Neutral Grays - Extended palette
+$grey-50:              #F8F9FA !default;
+$grey-100:             #F0F2F4 !default;
+$grey-200:             #E5E7EB !default;
+$grey-300:             #D1D5DB !default;
+$grey-400:             #9CA3AF !default;
+$grey-500:             #6B7280 !default;
+$grey-600:             #4B5563 !default;
+$grey-700:             #374151 !default;
+$grey-800:             #1F2937 !default;
+$grey-900:             #111827 !default;
 
+// Legacy gray aliases
+$grey-color:           $grey-500 !default;
+$grey-color-light:     $grey-200 !default;
+$grey-color-dark:      #0F1419 !default;
 
-// Theme colors
+$white-color:          #FFFFFF !default;
+$black-color:          #000000 !default;
 
-$code-bg-color-light:     rgba($purple-color, 0.05);
-$code-bg-color-dark:      #2c3237 !default;
+// Code backgrounds
+$code-bg-color-light:  rgba($primary-color, 0.04);
+$code-bg-color-dark:   #1E2530 !default;
+
+// Card shadows - Modern subtle shadows
+$shadow-sm:            0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md:            0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg:            0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+// Transitions - Smooth, subtle animations
+$transition-fast:      150ms ease;
+$transition-base:      250ms ease;
+$transition-slow:      400ms ease;
