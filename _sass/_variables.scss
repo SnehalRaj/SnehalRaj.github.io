@@ -3,11 +3,16 @@
  * Clean, professional academic website color scheme
  ******************************************************************************/
 
+// Typography
+$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !default;
+$font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !default;
+$font-family-mono: 'JetBrains Mono', 'Fira Code', monospace !default;
+
 // Primary Colors - Modern Minimal Palette
 $primary-color:        #2C3E50 !default;    // Deep slate blue (professional, minimal)
 $primary-color-light:  #3D5A80 !default;    // Lighter slate for hover states
-$accent-color:         #4A90A4 !default;    // Muted teal accent (subtle, professional)
-$accent-color-light:   #7DB8C7 !default;    // Light teal for backgrounds
+$accent-color:         #5B9BD5 !default;    // Softer blue accent
+$accent-color-light:   #8BBCE8 !default;    // Light blue for hover states
 
 // Legacy color aliases (for backward compatibility with al-folio)
 $purple-color:         $primary-color;

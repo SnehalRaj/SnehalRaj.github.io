@@ -3,89 +3,154 @@ layout: default
 ---
 
 <!-- about.html -->
-      <div class="post">
-        <header class="post-header">
-          <h1 class="post-title">
-            {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
-          </h1>
-          <p class="desc">{{ page.subtitle }}</p>
-        </header>
+<div class="about-page">
+  <!-- Sidebar Navigation -->
+  <nav class="about-sidebar" id="about-sidebar">
+    <ul>
+      <li><a href="#about" class="sidebar-link active">About</a></li>
+      {% if page.experience and site.data.experience %}<li><a href="#experience" class="sidebar-link">Experience</a></li>{% endif %}
+      {% if page.experience and site.data.experience %}<li><a href="#education" class="sidebar-link">Education</a></li>{% endif %}
+      {% if page.news and site.announcements.enabled %}<li><a href="#news" class="sidebar-link">News</a></li>{% endif %}
+      {% if page.selected_papers %}<li><a href="#publications" class="sidebar-link">Publications</a></li>{% endif %}
+      {% if page.hobbies %}<li><a href="#beyond-research" class="sidebar-link">Beyond Research</a></li>{% endif %}
+    </ul>
+  </nav>
 
-        <article>
-          {% if page.profile -%}
-          <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-            {%- if page.profile.image %}
-              {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
-
-              {% if page.profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-              {% endif %}
-
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="Click for a surprise!" style="cursor: pointer;">
-              {% include figure.html
-              path=profile_image_path
-              class=profile_image_class
-              alt=page.profile.image
-              cache_bust=true -%}
-              </a>
-            {% endif -%}
-            {%- if page.profile.address %}
-            <div class="address">
-              {{ page.profile.address }}
-            </div>
-            {%- endif %}
+  <!-- Main Content -->
+  <div class="about-content">
+    <!-- Profile Hero -->
+    <div class="profile-hero">
+      <div class="profile-content">
+        <h1 class="profile-name">
+          {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
+        </h1>
+        <p class="profile-subtitle">{{ page.subtitle }}</p>
+        <div class="profile-social">
+          <div class="contact-icons">
+            {% include social.html %}
           </div>
-          {%- endif %}
+        </div>
+      </div>
+      {% if page.profile.image %}
+      <div class="profile-photo">
+        {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+        {% if page.profile.image_circular %}
+          {%- assign profile_image_class = "img-fluid rounded-circle" -%}
+        {% else %}
+          {%- assign profile_image_class = "img-fluid rounded" -%}
+        {% endif %}
+        {% include figure.html path=profile_image_path class=profile_image_class alt=page.profile.image cache_bust=true -%}
+      </div>
+      {% endif %}
+    </div>
 
-          <div class="clearfix">
-            {{ content }}
+    <article>
+      <!-- About / Bio -->
+      <div id="about" class="homepage-section">
+        <div class="clearfix">
+          {{ content }}
+        </div>
+      </div>
+
+      <!-- Experience -->
+      {% if page.experience and site.data.experience %}
+      <div id="experience" class="homepage-section experience-section">
+        <h2 class="section-heading"><i class="fas fa-briefcase"></i> Experience</h2>
+        {% for item in site.data.experience.work %}
+        <div class="experience-item">
+          <div class="experience-date">{{ item.date }}</div>
+          <div class="experience-details">
+            <h4>{{ item.title }}</h4>
+            <div class="experience-institution">{{ item.institution }}</div>
+            {% if item.location != "" %}<div class="experience-location"><i class="fas fa-map-marker-alt"></i> {{ item.location }}</div>{% endif %}
+            {% if item.description %}<p class="experience-description">{{ item.description }}</p>{% endif %}
           </div>
+        </div>
+        {% endfor %}
+      </div>
 
-          <!-- News -->
-          {% if page.news and site.announcements.enabled -%}
-            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">News</a></h2>
-            {%- include news.html limit=true %}
-          {%- endif %}
+      <div id="education" class="homepage-section experience-section">
+        <h2 class="section-heading"><i class="fas fa-graduation-cap"></i> Education</h2>
+        {% for item in site.data.experience.education %}
+        <div class="experience-item">
+          <div class="experience-date">{{ item.date }}</div>
+          <div class="experience-details">
+            <h4>{{ item.degree }}</h4>
+            <div class="experience-institution">{{ item.institution }}</div>
+            {% if item.location != "" %}<div class="experience-location"><i class="fas fa-map-marker-alt"></i> {{ item.location }}</div>{% endif %}
+            {% if item.description %}<p class="experience-description">{{ item.description }}</p>{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
 
-          <!-- Latest posts -->
-          {% if page.latest_posts -%}
-            <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
-            {%- include latest_posts.html %}
-          {%- endif %}
+      <!-- News -->
+      {% if page.news and site.announcements.enabled -%}
+      <div id="news" class="homepage-section">
+        <h2 class="section-heading"><i class="fas fa-newspaper"></i> <a href="{{ '/news/' | relative_url }}">News</a></h2>
+        {%- include news.html limit=true %}
+      </div>
+      {%- endif %}
 
-          <!-- Selected papers -->
-          {% if page.selected_papers -%}
-            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Selected Publications</a></h2>
-            {%- include selected_papers.html %}
-          {%- endif %}
+      <!-- Selected papers -->
+      {% if page.selected_papers -%}
+      <div id="publications" class="homepage-section">
+        <h2 class="section-heading"><i class="fas fa-book"></i> <a href="{{ '/publications/' | relative_url }}">Selected Publications</a></h2>
+        {%- include selected_papers.html %}
+      </div>
+      {%- endif %}
 
-          <!-- Beyond Research / Hobbies -->
-          {% if page.hobbies -%}
-            <h2>Beyond Research</h2>
-            <div class="personal-section">
-              <div class="hobby-tags">
-                <span class="hobby-tag"><i class="fas fa-drum"></i> Playing Drums</span>
-                <span class="hobby-tag">🏸 Badminton</span>
-                <span class="hobby-tag"><i class="fas fa-table-tennis"></i> Table Tennis</span>
-              </div>
-            </div>
-          {%- endif %}
-
-          <!-- Social -->
-          {%- if page.social %}
-            <div class="social">
-              <div class="contact-icons">
-                {% include social.html %}
-              </div>
-
-              <div class="contact-note">
-                {{ site.contact_note }}
-              </div>
-
-            </div>
-          {%- endif %}
-        </article>
-
+      <!-- Beyond Research / Hobbies -->
+      {% if page.hobbies -%}
+      <div id="beyond-research" class="homepage-section">
+        <h2 class="section-heading"><i class="fas fa-heart"></i> Beyond Research</h2>
+        <div class="personal-section">
+          <div class="hobby-tags">
+            <span class="hobby-tag"><i class="fas fa-drum"></i> Playing Drums</span>
+            <span class="hobby-tag">🏸 Badminton</span>
+            <span class="hobby-tag"><i class="fas fa-table-tennis"></i> Table Tennis</span>
+          </div>
+        </div>
+      </div>
+      {%- endif %}
+    </article>
+  </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var sections = document.querySelectorAll('.homepage-section[id]');
+  var links = document.querySelectorAll('.sidebar-link');
+
+  function updateActive() {
+    var scrollPos = window.scrollY + 100;
+    var activeLink = null;
+
+    sections.forEach(function(section) {
+      if (section.offsetTop <= scrollPos) {
+        var id = section.getAttribute('id');
+        var link = document.querySelector('.sidebar-link[href="#' + id + '"]');
+        if (link) activeLink = link;
+      }
+    });
+
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (activeLink) activeLink.classList.add('active');
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  // Smooth scroll for sidebar links
+  links.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>

@@ -70,14 +70,14 @@
 
 html[data-theme='dark'] {
   // Backgrounds
-  --global-bg-color: #{$grey-color-dark};
-  --global-bg-secondary: #1A1F25;
+  --global-bg-color: #0F1117;
+  --global-bg-secondary: #181B25;
   --global-code-bg-color: #{$code-bg-color-dark};
-  --global-card-bg-color: #1A1F25;
+  --global-card-bg-color: #181B25;
 
   // Text
-  --global-text-color: #E7E9EA;
-  --global-text-color-light: #8899A6;
+  --global-text-color: #E1E4E8;
+  --global-text-color-light: #8B949E;
   --global-text-color-muted: #6B7B8A;
 
   // Theme & Accent
@@ -87,8 +87,8 @@ html[data-theme='dark'] {
   --global-accent-color: #{$accent-color-light};
 
   // Borders & Dividers
-  --global-divider-color: #2F3542;
-  --global-border-color: #2F3542;
+  --global-divider-color: #21262D;
+  --global-border-color: #21262D;
 
   // Footer
   --global-footer-bg-color: #0A0D10;
@@ -97,6 +97,11 @@ html[data-theme='dark'] {
 
   // Other
   --global-distill-app-color: #8899A6;
+
+  // Shadows (more visible on dark backgrounds)
+  --global-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --global-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --global-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
 
   // Block quotes (keep consistent in dark mode)
   --global-tip-block: #34D399;

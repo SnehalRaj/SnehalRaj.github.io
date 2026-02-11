@@ -2,6 +2,24 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
+body {
+  font-family: $font-family-base;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+h3 { font-size: 1.25rem; }
+
 // Typography
 
 p,
@@ -110,6 +128,86 @@ blockquote {
 .citation,
 .citation-number {
   color: var(--global-theme-color);
+}
+
+// Profile Hero Section
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  .profile-content {
+    flex: 1;
+
+    .profile-name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+
+    .profile-subtitle {
+      font-size: 1rem;
+      color: var(--global-text-color-light);
+      margin-bottom: 1rem;
+
+      a {
+        color: var(--global-theme-color);
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+      }
+    }
+
+    .profile-social {
+      .contact-icons {
+        font-size: 1.4rem;
+        text-align: left;
+
+        a {
+          margin-right: 0.75rem;
+          i::before {
+            color: var(--global-text-color-light);
+            transition: color 0.2s ease;
+          }
+          &:hover i::before {
+            color: var(--global-theme-color);
+          }
+        }
+      }
+    }
+  }
+
+  .profile-photo {
+    flex-shrink: 0;
+
+    img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .profile-hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 1.5rem;
+
+    .profile-content .profile-social .contact-icons {
+      text-align: center;
+    }
+
+    .profile-photo img {
+      width: 150px;
+      height: 150px;
+    }
+  }
 }
 
 // Profile
@@ -1036,66 +1134,8 @@ nav[data-toggle="toc"] {
 }
 
 /*******************************************************************************
- * About Page - Research Interests & Personal Sections
+ * About Page - Personal Sections
  ******************************************************************************/
-
-// Section headers
-.about-section {
-  margin-bottom: 2.5rem;
-
-  h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--global-text-color);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--global-theme-color);
-    display: inline-block;
-  }
-}
-
-// Research interests grid
-.research-interests {
-  display: grid;
-  gap: 1rem;
-
-  .interest-item {
-    display: flex;
-    align-items: flex-start;
-    padding: 1.25rem;
-    background-color: var(--global-bg-secondary, #f8f9fa);
-    border-radius: 8px;
-    border-left: 3px solid var(--global-theme-color);
-    transition: transform 200ms ease, box-shadow 200ms ease;
-
-    &:hover {
-      transform: translateX(4px);
-    }
-
-    .interest-icon {
-      font-size: 1.5rem;
-      margin-right: 1rem;
-      color: var(--global-theme-color);
-      min-width: 2rem;
-    }
-
-    .interest-content {
-      h4 {
-        font-size: 1rem;
-        font-weight: 600;
-        margin: 0 0 0.375rem 0;
-        color: var(--global-text-color);
-      }
-
-      p {
-        font-size: 0.9rem;
-        color: var(--global-text-color-light);
-        margin: 0;
-        line-height: 1.5;
-      }
-    }
-  }
-}
 
 // Personal/hobbies section
 .personal-section {
@@ -1144,4 +1184,279 @@ nav[data-toggle="toc"] {
   );
   margin: 2.5rem 0;
   border: none;
+}
+
+// Experience Section
+.experience-section {
+  margin-bottom: 2.5rem;
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--global-divider-color);
+
+    i {
+      color: var(--global-theme-color);
+      margin-right: 0.5rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  .experience-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--global-divider-color);
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .experience-date {
+      flex-shrink: 0;
+      width: 120px;
+      font-size: 0.85rem;
+      color: var(--global-text-color-light);
+      font-weight: 500;
+      padding-top: 2px;
+    }
+
+    .experience-details {
+      flex: 1;
+
+      h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.25rem 0;
+      }
+
+      .experience-institution {
+        font-size: 0.95rem;
+        color: var(--global-text-color);
+        margin-bottom: 0.125rem;
+      }
+
+      .experience-location {
+        font-size: 0.85rem;
+        color: var(--global-text-color-light);
+        margin-bottom: 0.25rem;
+
+        i { margin-right: 0.25rem; font-size: 0.8rem; }
+      }
+
+      .experience-description {
+        font-size: 0.9rem;
+        color: var(--global-text-color-light);
+        margin: 0.25rem 0 0 0;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .experience-section .experience-item {
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .experience-date {
+      width: auto;
+    }
+  }
+}
+
+// News Section
+.news-section {
+  margin-bottom: 1.5rem;
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .news-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    align-items: baseline;
+
+    &.news-hidden {
+      display: none;
+    }
+
+    .news-date {
+      flex-shrink: 0;
+      width: 70px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--global-theme-color);
+    }
+
+    .news-content {
+      font-size: 0.9rem;
+      color: var(--global-text-color);
+      line-height: 1.5;
+    }
+  }
+
+  .news-toggle {
+    background: none;
+    border: 1px solid var(--global-divider-color);
+    color: var(--global-text-color-light);
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--global-theme-color);
+      color: var(--global-theme-color);
+    }
+  }
+}
+
+// About Page Sidebar Layout
+.about-page {
+  display: flex;
+  gap: 2rem;
+}
+
+.about-sidebar {
+  flex-shrink: 0;
+  width: 180px;
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid var(--global-divider-color);
+  }
+
+  .sidebar-link {
+    display: block;
+    padding: 0.4rem 0 0.4rem 1rem;
+    font-size: 0.8rem;
+    color: var(--global-text-color-light);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+
+    &.active {
+      color: var(--global-theme-color);
+      border-left-color: var(--global-theme-color);
+      font-weight: 500;
+    }
+  }
+}
+
+.about-content {
+  flex: 1;
+  min-width: 0;
+}
+
+// Homepage Section Anchors
+.homepage-section {
+  margin-bottom: 2.5rem;
+  scroll-margin-top: 80px;
+
+  .section-heading {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--global-text-color);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--global-divider-color);
+
+    i {
+      color: var(--global-theme-color);
+      margin-right: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      &:hover { text-decoration: none; color: var(--global-theme-color); }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .about-sidebar {
+    display: none;
+  }
+
+  .about-page {
+    display: block;
+  }
+}
+
+// Smooth scroll globally
+html {
+  scroll-behavior: smooth;
+}
+
+// Subtle fade-in animation for homepage sections
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.about-content .homepage-section {
+  animation: fadeInUp 0.4s ease both;
+}
+
+.about-content .homepage-section:nth-child(2) { animation-delay: 0.1s; }
+.about-content .homepage-section:nth-child(3) { animation-delay: 0.15s; }
+.about-content .homepage-section:nth-child(4) { animation-delay: 0.2s; }
+.about-content .homepage-section:nth-child(5) { animation-delay: 0.25s; }
+
+// Better link hover transitions
+a {
+  transition: color 0.2s ease;
+}
+
+// Card hover lift effect (scoped to projects and featured posts)
+.projects .card,
+.featured-posts .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--global-shadow-md);
+  }
+}
+
+// Publication item hover
+.publications ol.bibliography li {
+  transition: background-color 0.2s ease;
+  padding: 0.75rem;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: var(--global-bg-secondary, #f8f9fa);
+  }
+}
+
+// Profile hero fade in
+.profile-hero {
+  animation: fadeInUp 0.3s ease both;
 }

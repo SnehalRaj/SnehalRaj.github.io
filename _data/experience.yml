@@ -1,0 +1,49 @@
+work:
+  - title: "Associate Staff Scientist"
+    institution: "QC Ware Corp."
+    location: "Paris, France"
+    date: "Mar 2023 - Present"
+    description: "Research on real-world applications of Quantum Machine Learning in Industry."
+
+  - title: "Quantum Algorithms Consultant"
+    institution: "QC Ware Corp."
+    location: "Remote"
+    date: "Aug 2020 - Feb 2023"
+    description: "Machine Learning and Quantum Computing."
+
+  - title: "Research Intern"
+    institution: "Adobe"
+    location: "Bengaluru, India"
+    date: "Apr 2020 - Jul 2020"
+    description: "Used AutoML to distill knowledge from LLMs and automatically create fine-tuned models for downstream tasks. Accepted at EMNLP 2021."
+
+  - title: "Machine Learning Consultant"
+    institution: "ShopX - 10i Commerce Services"
+    location: "Bengaluru, India"
+    date: "May 2019 - Jul 2019"
+    description: "Machine Learning."
+
+  - title: "Backend Developer"
+    institution: "New York Office, IIT Kanpur"
+    location: "Kanpur, India"
+    date: "May 2018 - Jul 2018"
+    description: ""
+
+education:
+  - degree: "PhD, Quantum Machine Learning"
+    institution: "Sorbonne University (CIFRE)"
+    location: "Paris, France"
+    date: "2024 - Present"
+    description: "Research on theoretical foundations of Quantum Machine Learning."
+
+  - degree: "MSc Computer Science (Distinction)"
+    institution: "University of Oxford"
+    location: "Oxford, UK"
+    date: "2021 - 2022"
+    description: "Thesis on Quantum Graphical Calculus for Tensor Network Contractions."
+
+  - degree: "BTech Computer Science & Engineering"
+    institution: "Indian Institute of Technology Kanpur"
+    location: "Kanpur, India"
+    date: "2017 - 2021"
+    description: "GPA: 9.52/10.0 | All India Rank 168. Thesis on Quantum Complexity Theory."
