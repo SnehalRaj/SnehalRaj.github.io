@@ -1,3 +1,7 @@
+---
+render_with_liquid: false
+---
+
 # Website Redesign: Modern Academic Portfolio
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
