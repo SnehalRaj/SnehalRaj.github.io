@@ -1,0 +1,615 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"> <html><body> <h1 id="website-redesign-modern-academic-portfolio">Website Redesign: Modern Academic Portfolio</h1> <blockquote> <p><strong>For Claude:</strong> REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.</p> </blockquote> <p><strong>Goal:</strong> Redesign SnehalRaj.github.io with a modern, professional academic portfolio feel, while staying within the existing Jekyll/al-folio framework.</p> <p><strong>Architecture:</strong> The site stays on Jekyll + al-folio. We enhance the homepage to be a single-page academic portfolio with smooth in-page navigation, add missing sections (Work Experience/Education), improve typography/spacing, add interactive elements (show more/less), and polish the overall aesthetic. All changes are CSS/HTML/Liquid — no framework migration.</p> <p><strong>Tech Stack:</strong> Jekyll, SCSS, Liquid templates, Bootstrap 4.6, Font Awesome 6.4</p> <hr> <h2 id="key-differences-to-address">Key Differences to Address</h2> <table> <thead> <tr> <th>Feature</th> <th>Target Design</th> <th>Current Site</th> <th>Action</th> </tr> </thead> <tbody> <tr> <td>Layout</td> <td>Sidebar TOC + wide content</td> <td>Top navbar + narrow (850px) content</td> <td>Add in-page TOC sidebar on homepage</td> </tr> <tr> <td>Profile</td> <td>Name + photo + social links grouped prominently</td> <td>Name top, photo right-floated, social at bottom</td> <td>Redesign profile section</td> </tr> <tr> <td>Work Experience</td> <td>Prominent section on homepage</td> <td>Not on homepage (only in CV page)</td> <td>Add to homepage</td> </tr> <tr> <td>News</td> <td>Clean list with “Show More” toggle</td> <td>Scrollable box, limited to 5</td> <td>Add show more/less toggle</td> </tr> <tr> <td>Publications</td> <td>Categorized (Conference, Journal, etc.)</td> <td>Grouped by year only</td> <td>Add category grouping</td> </tr> <tr> <td>Social Links</td> <td>Icons right below name/photo</td> <td>At very bottom of page</td> <td>Move to profile section</td> </tr> <tr> <td>Typography</td> <td>Clean, spacious, modern</td> <td>Good but could be more polished</td> <td>Improve spacing &amp; hierarchy</td> </tr> <tr> <td>Page Width</td> <td>~960px with sidebar</td> <td>850px</td> <td>Widen to 1000px+</td> </tr> </tbody> </table> <hr> <h3 id="task-1-widen-content-area--improve-base-typography">Task 1: Widen Content Area &amp; Improve Base Typography</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_config.yml:56</code> (max_width setting)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_variables.scss</code> (add font variables)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_base.scss</code> (improve base typography)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_layout.scss</code> (container width)</li> </ul> <p><strong>Step 1: Update max_width in config</strong></p> <p>In <code class="language-plaintext highlighter-rouge">_config.yml</code>, change:</p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">max_width</span><span class="pi">:</span> <span class="s">850px</span>
+</code></pre></div></div> <p>to:</p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">max_width</span><span class="pi">:</span> <span class="s">1100px</span>
+</code></pre></div></div> <p><strong>Step 2: Add font stack variables to <code class="language-plaintext highlighter-rouge">_variables.scss</code></strong></p> <p>Add at the top (after the file header comment):</p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Typography</span>
+<span class="nv">$font-family-base</span><span class="p">:</span> <span class="s1">'Inter'</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s1">'Segoe UI'</span><span class="o">,</span> <span class="n">Roboto</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$font-family-heading</span><span class="p">:</span> <span class="s1">'Inter'</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s1">'Segoe UI'</span><span class="o">,</span> <span class="n">Roboto</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$font-family-mono</span><span class="p">:</span> <span class="s1">'JetBrains Mono'</span><span class="o">,</span> <span class="s1">'Fira Code'</span><span class="o">,</span> <span class="nb">monospace</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div> <p><strong>Step 3: Add Inter font to head.html</strong></p> <p>In <code class="language-plaintext highlighter-rouge">_includes/head.html</code>, add the Inter font import from Google Fonts (before existing stylesheets):</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preconnect"</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preconnect"</span> <span class="na">href=</span><span class="s">"https://fonts.gstatic.com"</span> <span class="na">crossorigin</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+</code></pre></div></div> <p><strong>Step 4: Update base typography in <code class="language-plaintext highlighter-rouge">_base.scss</code></strong></p> <p>At the top of the file, add:</p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="nv">$font-family-base</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.7</span><span class="p">;</span>
+  <span class="na">-webkit-font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+  <span class="na">-moz-osx-font-smoothing</span><span class="p">:</span> <span class="n">grayscale</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="nv">$font-family-heading</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">600</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">h2</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.5rem</span><span class="p">;</span> <span class="nl">margin-top</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span> <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">h3</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.25rem</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div> <p><strong>Step 5: Verify locally</strong></p> <p>Run: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> Expected: Site loads with wider content area and Inter font.</p> <p><strong>Step 6: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _config.yml _sass/_variables.scss _sass/_base.scss _sass/_layout.scss _includes/head.html
+git commit <span class="nt">-m</span> <span class="s2">"feat: widen content area and improve base typography"</span>
+</code></pre></div></div> <hr> <h3 id="task-2-redesign-profile-section-name--photo--social-links">Task 2: Redesign Profile Section (Name + Photo + Social Links)</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_layouts/about.html</code> </li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_base.scss</code> (profile styles)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_pages/about.md</code> (frontmatter)</li> </ul> <p><strong>Step 1: Redesign the profile section in about.html</strong></p> <p>Replace the current profile + header section with a new hero-style layout that puts the name, subtitle, bio intro, and social links in a prominent top section alongside the profile photo. The new layout should:</p> <ul> <li>Use a two-column flex layout (content left, photo right)</li> <li>Show name as large heading, subtitle/affiliations below</li> <li>Place social icons directly under the name/subtitle (not at the bottom)</li> <li>Profile photo: 180px circular, with subtle shadow</li> <li>On mobile: stack vertically (photo on top)</li> </ul> <p>Replace the current header + profile div structure with:</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"profile-hero"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"profile-content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"profile-name"</span><span class="nt">&gt;</span>
+      {% if site.title == "blank" -%}
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"font-weight-bold"</span><span class="nt">&gt;</span>{{ site.first_name }}<span class="nt">&lt;/span&gt;</span> {{ site.middle_name }} {{ site.last_name }}
+      {%- else -%}{{ site.title }}{%- endif %}
+    <span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"profile-subtitle"</span><span class="nt">&gt;</span>{{ page.subtitle }}<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"profile-social"</span><span class="nt">&gt;</span>
+      {% include social.html %}
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  {% if page.profile.image %}
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"profile-photo"</span><span class="nt">&gt;</span>
+    {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+    {% include figure.html path=profile_image_path class="img-fluid rounded-circle" alt=page.profile.image cache_bust=true -%}
+  <span class="nt">&lt;/div&gt;</span>
+  {% endif %}
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div> <p><strong>Step 2: Add profile hero styles to <code class="language-plaintext highlighter-rouge">_base.scss</code></strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Profile Hero Section</span>
+<span class="nc">.profile-hero</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">gap</span><span class="p">:</span> <span class="m">3rem</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">2</span><span class="mi">.5rem</span><span class="p">;</span>
+  <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-divider-color</span><span class="p">);</span>
+
+  <span class="nc">.profile-content</span> <span class="p">{</span>
+    <span class="nl">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+
+    <span class="nc">.profile-name</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">2</span><span class="mi">.5rem</span><span class="p">;</span>
+      <span class="nl">font-weight</span><span class="p">:</span> <span class="m">700</span><span class="p">;</span>
+      <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25rem</span><span class="p">;</span>
+      <span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.2</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.profile-subtitle</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color-light</span><span class="p">);</span>
+      <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+
+      <span class="nt">a</span> <span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+        <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+        <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span> <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">underline</span><span class="p">;</span> <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nc">.profile-social</span> <span class="p">{</span>
+      <span class="nc">.contact-icons</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.4rem</span><span class="p">;</span>
+        <span class="nl">text-align</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+
+        <span class="nt">a</span> <span class="p">{</span>
+          <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="mi">.75rem</span><span class="p">;</span>
+          <span class="na">i</span><span class="p">:</span><span class="o">:</span><span class="n">before</span> <span class="p">{</span>
+            <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color-light</span><span class="p">);</span>
+            <span class="nl">transition</span><span class="p">:</span> <span class="nb">color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">&amp;</span><span class="nd">:hover</span> <span class="nt">i</span><span class="nd">::before</span> <span class="p">{</span>
+            <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nc">.profile-photo</span> <span class="p">{</span>
+    <span class="nl">flex-shrink</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="nt">img</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">180px</span><span class="p">;</span>
+      <span class="nl">height</span><span class="p">:</span> <span class="m">180px</span><span class="p">;</span>
+      <span class="nl">object-fit</span><span class="p">:</span> <span class="nb">cover</span><span class="p">;</span>
+      <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+      <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">4px</span> <span class="m">20px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.1</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.profile-hero</span> <span class="p">{</span>
+    <span class="nl">flex-direction</span><span class="p">:</span> <span class="nb">column-reverse</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">gap</span><span class="p">:</span> <span class="m">1</span><span class="mi">.5rem</span><span class="p">;</span>
+
+    <span class="nc">.profile-content</span> <span class="nc">.profile-social</span> <span class="nc">.contact-icons</span> <span class="p">{</span>
+      <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.profile-photo</span> <span class="nt">img</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+      <span class="nl">height</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Step 3: Remove the old social section at the bottom of about.html</strong></p> <p>Remove the <code class="language-plaintext highlighter-rouge">{% if page.social %}</code> block at the bottom since social links are now in the profile hero.</p> <p><strong>Step 4: Update about.md frontmatter</strong></p> <p>Set <code class="language-plaintext highlighter-rouge">social: false</code> (since social is now integrated into the profile hero, not a separate bottom section).</p> <p><strong>Step 5: Verify locally</strong></p> <p>Run: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> Expected: Profile section shows name, affiliations, social icons, and photo in a clean two-column layout.</p> <p><strong>Step 6: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _layouts/about.html _sass/_base.scss _pages/about.md
+git commit <span class="nt">-m</span> <span class="s2">"feat: redesign profile section with hero layout and integrated social links"</span>
+</code></pre></div></div> <hr> <h3 id="task-3-add-work-experience--education-section-to-homepage">Task 3: Add Work Experience &amp; Education Section to Homepage</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_layouts/about.html</code> (add experience section)</li> <li>Create: <code class="language-plaintext highlighter-rouge">_data/experience.yml</code> (experience data)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_base.scss</code> (experience styles)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_pages/about.md</code> (enable experience)</li> </ul> <p><strong>Step 1: Create experience data file</strong></p> <p>Create <code class="language-plaintext highlighter-rouge">_data/experience.yml</code>:</p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">work</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">CIFRE</span><span class="nv"> </span><span class="s">PhD</span><span class="nv"> </span><span class="s">Student"</span>
+    <span class="na">institution</span><span class="pi">:</span> <span class="s2">"</span><span class="s">LIP6/CNRS</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Sorbonne</span><span class="nv"> </span><span class="s">University</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">QC</span><span class="nv"> </span><span class="s">Ware"</span>
+    <span class="na">location</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paris,</span><span class="nv"> </span><span class="s">France"</span>
+    <span class="na">date</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2022</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Present"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Theoretical</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">empirical</span><span class="nv"> </span><span class="s">study</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">quantum</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">quantum-inspired</span><span class="nv"> </span><span class="s">algorithms.</span><span class="nv"> </span><span class="s">Bridging</span><span class="nv"> </span><span class="s">quantum</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">classical</span><span class="nv"> </span><span class="s">machine</span><span class="nv"> </span><span class="s">learning."</span>
+    <span class="na">advisors</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Prof.</span><span class="nv"> </span><span class="s">Elham</span><span class="nv"> </span><span class="s">Kashefi"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Dr.</span><span class="nv"> </span><span class="s">Brian</span><span class="nv"> </span><span class="s">Coyle"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://scholar.google.com/citations?user=zDZuloYAAAAJ&amp;hl=en"</span>
+
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Research</span><span class="nv"> </span><span class="s">Intern"</span>
+    <span class="na">institution</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Adobe</span><span class="nv"> </span><span class="s">Research"</span>
+    <span class="na">location</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">date</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2021"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Worked</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Large</span><span class="nv"> </span><span class="s">Language</span><span class="nv"> </span><span class="s">Models."</span>
+
+<span class="na">education</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">degree</span><span class="pi">:</span> <span class="s2">"</span><span class="s">MSc</span><span class="nv"> </span><span class="s">Advanced</span><span class="nv"> </span><span class="s">Computer</span><span class="nv"> </span><span class="s">Science"</span>
+    <span class="na">institution</span><span class="pi">:</span> <span class="s2">"</span><span class="s">University</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Oxford"</span>
+    <span class="na">location</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Oxford,</span><span class="nv"> </span><span class="s">UK"</span>
+    <span class="na">date</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2021</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">2022"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Thesis</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">improving</span><span class="nv"> </span><span class="s">simulations</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Google's</span><span class="nv"> </span><span class="s">supremacy</span><span class="nv"> </span><span class="s">circuits."</span>
+    <span class="na">advisor</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Prof.</span><span class="nv"> </span><span class="s">Aleks</span><span class="nv"> </span><span class="s">Kissinger"</span>
+      <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://www.cs.ox.ac.uk/people/aleks.kissinger/"</span>
+
+  <span class="pi">-</span> <span class="na">degree</span><span class="pi">:</span> <span class="s2">"</span><span class="s">BTech</span><span class="nv"> </span><span class="s">Computer</span><span class="nv"> </span><span class="s">Science</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Engineering"</span>
+    <span class="na">institution</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Indian</span><span class="nv"> </span><span class="s">Institute</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Technology</span><span class="nv"> </span><span class="s">Kanpur"</span>
+    <span class="na">location</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Kanpur,</span><span class="nv"> </span><span class="s">India"</span>
+    <span class="na">date</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2017</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">2021"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Thesis</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Quantum</span><span class="nv"> </span><span class="s">Query</span><span class="nv"> </span><span class="s">Complexity."</span>
+    <span class="na">advisor</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Prof.</span><span class="nv"> </span><span class="s">Rajat</span><span class="nv"> </span><span class="s">Mittal"</span>
+      <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://www.cse.iitk.ac.in/users/rmittal/"</span>
+</code></pre></div></div> <p><strong>Step 2: Add experience section to about.html</strong></p> <p>After the bio content div and before the News section, add:</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Work Experience --&gt;</span>
+{% if page.experience and site.data.experience %}
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-section"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h2&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-briefcase"</span><span class="nt">&gt;&lt;/i&gt;</span> Experience<span class="nt">&lt;/h2&gt;</span>
+  {% for item in site.data.experience.work %}
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-item"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-date"</span><span class="nt">&gt;</span>{{ item.date }}<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-details"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h4&gt;</span>{{ item.title }}<span class="nt">&lt;/h4&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-institution"</span><span class="nt">&gt;</span>{{ item.institution }}<span class="nt">&lt;/div&gt;</span>
+      {% if item.location %}<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-location"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-map-marker-alt"</span><span class="nt">&gt;&lt;/i&gt;</span> {{ item.location }}<span class="nt">&lt;/div&gt;</span>{% endif %}
+      {% if item.description %}<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"experience-description"</span><span class="nt">&gt;</span>{{ item.description }}<span class="nt">&lt;/p&gt;</span>{% endif %}
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  {% endfor %}
+
+  <span class="nt">&lt;h2&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-graduation-cap"</span><span class="nt">&gt;&lt;/i&gt;</span> Education<span class="nt">&lt;/h2&gt;</span>
+  {% for item in site.data.experience.education %}
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-item"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-date"</span><span class="nt">&gt;</span>{{ item.date }}<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-details"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h4&gt;</span>{{ item.degree }}<span class="nt">&lt;/h4&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-institution"</span><span class="nt">&gt;</span>{{ item.institution }}<span class="nt">&lt;/div&gt;</span>
+      {% if item.location %}<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-location"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-map-marker-alt"</span><span class="nt">&gt;&lt;/i&gt;</span> {{ item.location }}<span class="nt">&lt;/div&gt;</span>{% endif %}
+      {% if item.advisor %}<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"experience-advisor"</span><span class="nt">&gt;</span>Advisor: <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ item.advisor.url }}"</span><span class="nt">&gt;</span>{{ item.advisor.name }}<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>{% endif %}
+      {% if item.description %}<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"experience-description"</span><span class="nt">&gt;</span>{{ item.description }}<span class="nt">&lt;/p&gt;</span>{% endif %}
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  {% endfor %}
+<span class="nt">&lt;/div&gt;</span>
+{% endif %}
+</code></pre></div></div> <p><strong>Step 3: Add experience styles to <code class="language-plaintext highlighter-rouge">_base.scss</code></strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Experience Section</span>
+<span class="nc">.experience-section</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">2</span><span class="mi">.5rem</span><span class="p">;</span>
+
+  <span class="nt">h2</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.35rem</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="m">600</span><span class="p">;</span>
+    <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">1</span><span class="mi">.5rem</span><span class="p">;</span>
+    <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5rem</span><span class="p">;</span>
+    <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-divider-color</span><span class="p">);</span>
+
+    <span class="nt">i</span> <span class="p">{</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+      <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5rem</span><span class="p">;</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.1rem</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nc">.experience-item</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+    <span class="nl">gap</span><span class="p">:</span> <span class="m">1</span><span class="mi">.5rem</span><span class="p">;</span>
+    <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">1</span><span class="mi">.25rem</span><span class="p">;</span>
+    <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">1</span><span class="mi">.25rem</span><span class="p">;</span>
+    <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-divider-color</span><span class="p">);</span>
+
+    <span class="k">&amp;</span><span class="nd">:last-child</span> <span class="p">{</span>
+      <span class="nl">border-bottom</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+      <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.experience-date</span> <span class="p">{</span>
+      <span class="nl">flex-shrink</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">120px</span><span class="p">;</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.85rem</span><span class="p">;</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color-light</span><span class="p">);</span>
+      <span class="nl">font-weight</span><span class="p">:</span> <span class="m">500</span><span class="p">;</span>
+      <span class="nl">padding-top</span><span class="p">:</span> <span class="m">2px</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.experience-details</span> <span class="p">{</span>
+      <span class="nl">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+
+      <span class="nt">h4</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+        <span class="nl">font-weight</span><span class="p">:</span> <span class="m">600</span><span class="p">;</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span><span class="mi">.25rem</span> <span class="m">0</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nc">.experience-institution</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.95rem</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color</span><span class="p">);</span>
+        <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.125rem</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nc">.experience-location</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.85rem</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color-light</span><span class="p">);</span>
+        <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25rem</span><span class="p">;</span>
+
+        <span class="nt">i</span> <span class="p">{</span> <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25rem</span><span class="p">;</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.8rem</span><span class="p">;</span> <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="nc">.experience-advisor</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.85rem</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color-light</span><span class="p">);</span>
+        <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25rem</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nc">.experience-description</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.9rem</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color-light</span><span class="p">);</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25rem</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+        <span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.5</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">576px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.experience-section</span> <span class="nc">.experience-item</span> <span class="p">{</span>
+    <span class="nl">flex-direction</span><span class="p">:</span> <span class="nb">column</span><span class="p">;</span>
+    <span class="nl">gap</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25rem</span><span class="p">;</span>
+
+    <span class="nc">.experience-date</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Step 4: Enable experience in about.md</strong></p> <p>Add <code class="language-plaintext highlighter-rouge">experience: true</code> to the frontmatter.</p> <p><strong>Step 5: Verify locally</strong></p> <p>Run: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> Expected: Work Experience and Education sections appear on homepage with clean timeline-style layout.</p> <p><strong>Step 6: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _data/experience.yml _layouts/about.html _sass/_base.scss _pages/about.md
+git commit <span class="nt">-m</span> <span class="s2">"feat: add work experience and education sections to homepage"</span>
+</code></pre></div></div> <hr> <h3 id="task-4-improve-news-section-with-show-moreless-toggle">Task 4: Improve News Section with Show More/Less Toggle</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_includes/news.html</code> </li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_base.scss</code> (news styles)</li> </ul> <p><strong>Step 1: Read current news.html include</strong></p> <p>Read <code class="language-plaintext highlighter-rouge">_includes/news.html</code> to understand the current implementation.</p> <p><strong>Step 2: Update news.html with show more/less</strong></p> <p>The news section should:</p> <ul> <li>Show the first 3 items by default</li> <li>Have a “Show More” button that reveals the rest</li> <li>Each news item shows date + inline content</li> <li>Clean, minimal design with subtle date styling</li> </ul> <p>Replace the news include with:</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-section"</span><span class="nt">&gt;</span>
+  {%- assign news = site.news | reverse -%}
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"news-list"</span><span class="nt">&gt;</span>
+    {%- for item in news -%}
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"news-item{% if forloop.index &gt; 3 %} news-hidden{% endif %}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"news-date"</span><span class="nt">&gt;</span>{{ item.date | date: "%b %Y" }}<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"news-content"</span><span class="nt">&gt;</span>
+        {%- if item.inline -%}
+          {{ item.content | remove: '<span class="nt">&lt;p&gt;</span>' | remove: '<span class="nt">&lt;/p&gt;</span>' | strip }}
+        {%- else -%}
+          <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"news-title"</span> <span class="na">href=</span><span class="s">"{{ item.url | relative_url }}"</span><span class="nt">&gt;</span>{{ item.title }}<span class="nt">&lt;/a&gt;</span>
+        {%- endif -%}
+      <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+    {%- endfor -%}
+  <span class="nt">&lt;/ul&gt;</span>
+  {%- if news.size &gt; 3 %}
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"news-toggle"</span> <span class="na">onclick=</span><span class="s">"toggleNews(this)"</span><span class="nt">&gt;</span>Show More<span class="nt">&lt;/button&gt;</span>
+  {%- endif %}
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">function</span> <span class="nf">toggleNews</span><span class="p">(</span><span class="nx">btn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.news-hidden</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">isShowing</span> <span class="o">=</span> <span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Show More</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nx">items</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="nx">isShowing</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">flex</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">});</span>
+  <span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">isShowing</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">Show Less</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">Show More</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <p><strong>Step 3: Add news styles to <code class="language-plaintext highlighter-rouge">_base.scss</code></strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// News Section</span>
+<span class="nc">.news-section</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">1</span><span class="mi">.5rem</span><span class="p">;</span>
+
+  <span class="nc">.news-list</span> <span class="p">{</span>
+    <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.news-item</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+    <span class="nl">gap</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5rem</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">baseline</span><span class="p">;</span>
+
+    <span class="k">&amp;</span><span class="nc">.news-hidden</span> <span class="p">{</span>
+      <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.news-date</span> <span class="p">{</span>
+      <span class="nl">flex-shrink</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.8rem</span><span class="p">;</span>
+      <span class="nl">font-weight</span><span class="p">:</span> <span class="m">500</span><span class="p">;</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nc">.news-content</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.9rem</span><span class="p">;</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color</span><span class="p">);</span>
+      <span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="mi">.5</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nc">.news-toggle</span> <span class="p">{</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-divider-color</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color-light</span><span class="p">);</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="mi">.35rem</span> <span class="m">1rem</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.8rem</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.75rem</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="nb">all</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+
+    <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+      <span class="nl">border-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Step 4: Verify locally</strong></p> <p>Run: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> Expected: News section shows 3 items with a “Show More” button that reveals the rest.</p> <p><strong>Step 5: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _includes/news.html _sass/_base.scss
+git commit <span class="nt">-m</span> <span class="s2">"feat: add show more/less toggle to news section"</span>
+</code></pre></div></div> <hr> <h3 id="task-5-add-in-page-sidebar-navigation-for-homepage">Task 5: Add In-Page Sidebar Navigation for Homepage</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_layouts/about.html</code> (wrap content in sidebar layout)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_base.scss</code> (sidebar styles)</li> </ul> <p><strong>Step 1: Add sidebar navigation to about.html</strong></p> <p>Wrap the existing content in a two-column layout. The sidebar contains anchor links to each section. The sidebar is sticky and follows scroll.</p> <p>The about.html layout should become:</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: default
+---
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"about-page"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Sidebar Navigation --&gt;</span>
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"about-sidebar"</span> <span class="na">id=</span><span class="s">"about-sidebar"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#about"</span> <span class="na">class=</span><span class="s">"sidebar-link active"</span><span class="nt">&gt;</span>About Me<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      {% if page.news and site.announcements.enabled %}<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#news"</span> <span class="na">class=</span><span class="s">"sidebar-link"</span><span class="nt">&gt;</span>News<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>{% endif %}
+      {% if page.experience %}<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#experience"</span> <span class="na">class=</span><span class="s">"sidebar-link"</span><span class="nt">&gt;</span>Experience<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>{% endif %}
+      {% if page.selected_papers %}<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#publications"</span> <span class="na">class=</span><span class="s">"sidebar-link"</span><span class="nt">&gt;</span>Publications<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>{% endif %}
+      {% if page.hobbies %}<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#beyond-research"</span> <span class="na">class=</span><span class="s">"sidebar-link"</span><span class="nt">&gt;</span>Beyond Research<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>{% endif %}
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/nav&gt;</span>
+
+  <span class="c">&lt;!-- Main Content --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"about-content"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Profile Hero --&gt;</span>
+    ...existing profile hero...
+
+    <span class="c">&lt;!-- Bio --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"about"</span> <span class="na">class=</span><span class="s">"about-section-anchor"</span><span class="nt">&gt;</span>
+      {{ content }}
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="c">&lt;!-- News --&gt;</span>
+    ...existing news section with id="news"...
+
+    <span class="c">&lt;!-- Experience --&gt;</span>
+    ...existing experience section with id="experience"...
+
+    <span class="c">&lt;!-- Publications --&gt;</span>
+    ...existing publications section with id="publications"...
+
+    <span class="c">&lt;!-- Beyond Research --&gt;</span>
+    ...existing hobbies section with id="beyond-research"...
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div> <p><strong>Step 2: Add sidebar styles</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// About Page Sidebar Layout</span>
+<span class="nc">.about-page</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+  <span class="nl">gap</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.about-sidebar</span> <span class="p">{</span>
+  <span class="nl">flex-shrink</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">180px</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">sticky</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+  <span class="nl">align-self</span><span class="p">:</span> <span class="nb">flex-start</span><span class="p">;</span>
+  <span class="nl">max-height</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">100vh</span> <span class="o">-</span> <span class="m">100px</span><span class="p">);</span>
+  <span class="nl">overflow-y</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+
+  <span class="nt">ul</span> <span class="p">{</span>
+    <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">border-left</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-divider-color</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nc">.sidebar-link</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="mi">.4rem</span> <span class="m">0</span> <span class="m">0</span><span class="mi">.4rem</span> <span class="m">1rem</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.8rem</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color-light</span><span class="p">);</span>
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">border-left</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+    <span class="nl">margin-left</span><span class="p">:</span> <span class="m">-1px</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="nb">all</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+
+    <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">&amp;</span><span class="nc">.active</span> <span class="p">{</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+      <span class="nl">border-left-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+      <span class="nl">font-weight</span><span class="p">:</span> <span class="m">500</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.about-content</span> <span class="p">{</span>
+  <span class="nl">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="nl">min-width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">992px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.about-sidebar</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.about-page</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Step 3: Add scroll-spy JavaScript</strong></p> <p>Add to about.html (before closing div):</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">sections</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[id]</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sidebar-link</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="kd">function</span> <span class="nf">updateActive</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">scrollPos</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">scrollY</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">activeLink</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+    <span class="nx">sections</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">section</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">section</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">&lt;=</span> <span class="nx">scrollPos</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">section</span><span class="p">.</span><span class="nf">getAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sidebar-link[href="#</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"]</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">link</span><span class="p">)</span> <span class="nx">activeLink</span> <span class="o">=</span> <span class="nx">link</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nx">links</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span> <span class="p">{</span> <span class="nx">l</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span> <span class="p">});</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">activeLink</span><span class="p">)</span> <span class="nx">activeLink</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll</span><span class="dl">'</span><span class="p">,</span> <span class="nx">updateActive</span><span class="p">);</span>
+  <span class="nf">updateActive</span><span class="p">();</span>
+
+  <span class="c1">// Smooth scroll for sidebar links</span>
+  <span class="nx">links</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">link</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nf">preventDefault</span><span class="p">();</span>
+      <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nf">getAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">href</span><span class="dl">'</span><span class="p">));</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">target</span><span class="p">.</span><span class="nf">scrollIntoView</span><span class="p">({</span> <span class="na">behavior</span><span class="p">:</span> <span class="dl">'</span><span class="s1">smooth</span><span class="dl">'</span><span class="p">,</span> <span class="na">block</span><span class="p">:</span> <span class="dl">'</span><span class="s1">start</span><span class="dl">'</span> <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <p><strong>Step 4: Verify locally</strong></p> <p>Run: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> Expected: Sidebar navigation appears on the left side of the homepage, highlights the current section on scroll, and smooth-scrolls when clicking links. On mobile, the sidebar is hidden.</p> <p><strong>Step 5: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _layouts/about.html _sass/_base.scss
+git commit <span class="nt">-m</span> <span class="s2">"feat: add sticky sidebar navigation to homepage"</span>
+</code></pre></div></div> <hr> <h3 id="task-6-polish-section-headers--spacing">Task 6: Polish Section Headers &amp; Spacing</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_layouts/about.html</code> (consistent section structure)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_base.scss</code> (section header styles)</li> </ul> <p><strong>Step 1: Ensure all homepage sections have consistent header style</strong></p> <p>Each section (News, Experience, Publications, Beyond Research) should use:</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"section-id"</span> <span class="na">class=</span><span class="s">"homepage-section"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"section-heading"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-icon"</span><span class="nt">&gt;&lt;/i&gt;</span> Section Title<span class="nt">&lt;/h2&gt;</span>
+  ...content...
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div> <p>Icons per section:</p> <ul> <li>News: <code class="language-plaintext highlighter-rouge">fa-newspaper</code> </li> <li>Experience: <code class="language-plaintext highlighter-rouge">fa-briefcase</code> </li> <li>Education: <code class="language-plaintext highlighter-rouge">fa-graduation-cap</code> </li> <li>Publications: <code class="language-plaintext highlighter-rouge">fa-book</code> </li> <li>Beyond Research: <code class="language-plaintext highlighter-rouge">fa-heart</code> </li> </ul> <p><strong>Step 2: Add section heading styles</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.homepage-section</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">2</span><span class="mi">.5rem</span><span class="p">;</span>
+  <span class="nl">scroll-margin-top</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+
+  <span class="nc">.section-heading</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.35rem</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="m">600</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-text-color</span><span class="p">);</span>
+    <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">1</span><span class="mi">.25rem</span><span class="p">;</span>
+    <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5rem</span><span class="p">;</span>
+    <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-divider-color</span><span class="p">);</span>
+
+    <span class="nt">i</span> <span class="p">{</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-theme-color</span><span class="p">);</span>
+      <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5rem</span><span class="p">;</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.1rem</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Step 3: Verify sections have consistent spacing and alignment</strong></p> <p>All sections should have uniform margin-bottom, heading style, and content padding.</p> <p><strong>Step 4: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _layouts/about.html _sass/_base.scss
+git commit <span class="nt">-m</span> <span class="s2">"feat: polish section headers with consistent styling and icons"</span>
+</code></pre></div></div> <hr> <h3 id="task-7-simplify-bio--clean-up-about-content">Task 7: Simplify Bio &amp; Clean Up About Content</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_pages/about.md</code> </li> </ul> <p><strong>Step 1: Simplify the about page bio</strong></p> <p>Keep the bio concise and professional. Remove the Research Interests HTML block (it’s verbose) and replace with a cleaner, shorter format:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">about</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">about</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s">&lt;a href='https://www.qcware.com/'&gt;QC Ware&lt;/a&gt; | &lt;a href='https://www.lip6.fr/?LANG=en'&gt;LIP6&lt;/a&gt; | &lt;a href='https://www.sorbonne-universite.fr/'&gt;Sorbonne Universite&lt;/a&gt;</span>
+
+<span class="na">profile</span><span class="pi">:</span>
+  <span class="na">align</span><span class="pi">:</span> <span class="s">right</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">prof_pic.jpg</span>
+  <span class="na">image_circular</span><span class="pi">:</span> <span class="kc">true</span>
+
+<span class="na">news</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">selected_papers</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">hobbies</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">experience</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="nn">---</span>
+
+I am a CIFRE PhD Student at LIP6/CNRS - Sorbonne University and <span class="p">[</span><span class="nv">QC Ware</span><span class="p">](</span><span class="sx">https://www.qcware.com/</span><span class="p">)</span>, working with <span class="p">[</span><span class="nv">Prof. Elham Kashefi</span><span class="p">](</span><span class="sx">https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427</span><span class="p">)</span> and <span class="p">[</span><span class="nv">Dr. Brian Coyle</span><span class="p">](</span><span class="sx">https://scholar.google.com/citations?user=zDZuloYAAAAJ&amp;hl=en</span><span class="p">)</span>.
+
+My research focuses on <span class="gs">**quantum and quantum-inspired algorithms for machine learning**</span> — exploring both theoretical foundations and practical applications on near-term quantum devices. I'm particularly interested in variational quantum algorithms, quantum-enhanced reinforcement learning, and parameter-efficient fine-tuning with quantum-inspired methods.
+
+Previously, I completed my MSc at the <span class="p">[</span><span class="nv">University of Oxford</span><span class="p">](</span><span class="sx">https://www.cs.ox.ac.uk/</span><span class="p">)</span> <span class="p">(</span><span class="sx">2022</span><span class="p">)</span>, where I worked on improving simulations for Google's supremacy circuits with <span class="p">[</span><span class="nv">Prof. Aleks Kissinger</span><span class="p">](</span><span class="sx">https://www.cs.ox.ac.uk/people/aleks.kissinger/</span><span class="p">)</span>. Before that, I studied at <span class="p">[</span><span class="nv">IIT Kanpur</span><span class="p">](</span><span class="sx">https://www.cse.iitk.ac.in/</span><span class="p">)</span> <span class="p">(</span><span class="sx">BTech,</span> CSE), where I explored quantum query complexity with <span class="p">[</span><span class="nv">Prof. Rajat Mittal</span><span class="p">](</span><span class="sx">https://www.cse.iitk.ac.in/users/rmittal/</span><span class="p">)</span>.
+
+I've also spent time at <span class="p">[</span><span class="nv">Adobe Research</span><span class="p">](</span><span class="sx">https://research.adobe.com/</span><span class="p">)</span> working on <span class="p">[</span><span class="nv">LLMs</span><span class="p">](</span><span class="sx">https://aclanthology.org/2021.emnlp-main.798/</span><span class="p">)</span>.
+</code></pre></div></div> <p><strong>Step 2: Verify locally</strong></p> <p>Run: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> Expected: Bio reads cleanly — concise, professional, no verbose HTML blocks.</p> <p><strong>Step 3: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _pages/about.md
+git commit <span class="nt">-m</span> <span class="s2">"refactor: simplify bio for cleaner professional presentation"</span>
+</code></pre></div></div> <hr> <h3 id="task-8-dark-mode-polish--color-refinement">Task 8: Dark Mode Polish &amp; Color Refinement</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_themes.scss</code> (refine dark mode colors)</li> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_variables.scss</code> (adjust accent color)</li> </ul> <p><strong>Step 1: Refine the color scheme for a more modern feel</strong></p> <p>Update accent color to a slightly warmer, more modern blue:</p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$accent-color</span><span class="p">:</span> <span class="mh">#5B9BD5</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>  <span class="c1">// Softer blue accent</span>
+<span class="nv">$accent-color-light</span><span class="p">:</span> <span class="mh">#8BBCE8</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div> <p><strong>Step 2: Polish dark mode theme</strong></p> <p>In <code class="language-plaintext highlighter-rouge">_themes.scss</code>, refine dark mode to be warmer and more readable:</p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span><span class="o">[</span><span class="nt">data-theme</span><span class="o">=</span><span class="s1">'dark'</span><span class="o">]</span> <span class="p">{</span>
+  <span class="na">--global-bg-color</span><span class="p">:</span> <span class="mh">#0F1117</span><span class="p">;</span>
+  <span class="na">--global-bg-secondary</span><span class="p">:</span> <span class="mh">#181B25</span><span class="p">;</span>
+  <span class="na">--global-card-bg-color</span><span class="p">:</span> <span class="mh">#181B25</span><span class="p">;</span>
+  <span class="na">--global-text-color</span><span class="p">:</span> <span class="mh">#E1E4E8</span><span class="p">;</span>
+  <span class="na">--global-text-color-light</span><span class="p">:</span> <span class="mh">#8B949E</span><span class="p">;</span>
+  <span class="na">--global-divider-color</span><span class="p">:</span> <span class="mh">#21262D</span><span class="p">;</span>
+  <span class="na">--global-border-color</span><span class="p">:</span> <span class="mh">#21262D</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Step 3: Verify both light and dark mode look good</strong></p> <p>Run: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> Toggle dark mode. Check all sections render properly in both modes.</p> <p><strong>Step 4: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _sass/_themes.scss _sass/_variables.scss
+git commit <span class="nt">-m</span> <span class="s2">"feat: refine color scheme and polish dark mode"</span>
+</code></pre></div></div> <hr> <h3 id="task-9-add-smooth-page-transitions--hover-polish">Task 9: Add Smooth Page Transitions &amp; Hover Polish</h3> <p><strong>Files:</strong></p> <ul> <li>Modify: <code class="language-plaintext highlighter-rouge">_sass/_base.scss</code> (add animation utilities)</li> </ul> <p><strong>Step 1: Add smooth transitions and hover effects</strong></p> <p>Add to <code class="language-plaintext highlighter-rouge">_base.scss</code>:</p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Smooth scroll globally</span>
+<span class="nt">html</span> <span class="p">{</span>
+  <span class="nl">scroll-behavior</span><span class="p">:</span> <span class="nb">smooth</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Subtle fade-in animation</span>
+<span class="k">@keyframes</span> <span class="nt">fadeIn</span> <span class="p">{</span>
+  <span class="nt">from</span> <span class="p">{</span> <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">translateY</span><span class="p">(</span><span class="m">8px</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nt">to</span> <span class="p">{</span> <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span> <span class="nl">transform</span><span class="p">:</span> <span class="nf">translateY</span><span class="p">(</span><span class="m">0</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.about-content</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="p">{</span>
+  <span class="nl">animation</span><span class="p">:</span> <span class="n">fadeIn</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span> <span class="nb">both</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Better link hover transitions</span>
+<span class="nt">a</span> <span class="p">{</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="nb">color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Card hover lift effect</span>
+<span class="nc">.card</span> <span class="p">{</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="n">transform</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">box-shadow</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+
+  <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="nf">translateY</span><span class="p">(</span><span class="m">-2px</span><span class="p">);</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-shadow-md</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Publication item hover</span>
+<span class="nc">.publications</span> <span class="nt">ol</span><span class="nc">.bibliography</span> <span class="nt">li</span> <span class="p">{</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="n">background-color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="mi">.75rem</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">6px</span><span class="p">;</span>
+
+  <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-bg-secondary</span><span class="o">,</span> <span class="mh">#f8f9fa</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Step 2: Verify animations are subtle and not distracting</strong></p> <p>Run: <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> Expected: Page loads with subtle fade-in. Hovering on cards and publication items shows smooth effects.</p> <p><strong>Step 3: Commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add _sass/_base.scss
+git commit <span class="nt">-m</span> <span class="s2">"feat: add smooth transitions and hover polish"</span>
+</code></pre></div></div> <hr> <h3 id="task-10-final-integration-test--cleanup">Task 10: Final Integration Test &amp; Cleanup</h3> <p><strong>Files:</strong></p> <ul> <li>All modified files</li> </ul> <p><strong>Step 1: Run full build</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
+</code></pre></div></div> <p>Expected: Build completes without errors.</p> <p><strong>Step 2: Run local server and test all pages</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div> <p>Test checklist:</p> <ul class="task-list"> <li class="task-list-item"> <input type="checkbox" class="task-list-item-checkbox" disabled>Homepage loads with new profile hero, sidebar, experience sections</li> <li class="task-list-item"> <input type="checkbox" class="task-list-item-checkbox" disabled>Dark mode toggle works correctly</li> <li class="task-list-item"> <input type="checkbox" class="task-list-item-checkbox" disabled>Sidebar highlights correct section on scroll</li> <li class="task-list-item"> <input type="checkbox" class="task-list-item-checkbox" disabled>“Show More” in news works</li> <li class="task-list-item"> <input type="checkbox" class="task-list-item-checkbox" disabled>Publications section renders correctly</li> <li class="task-list-item"> <input type="checkbox" class="task-list-item-checkbox" disabled>Mobile responsive layout works (sidebar hidden, content stacks)</li> <li class="task-list-item"> <input type="checkbox" class="task-list-item-checkbox" disabled>All navigation links work</li> <li class="task-list-item"> <input type="checkbox" class="task-list-item-checkbox" disabled>All other pages (publications, projects, talks, cv) still work</li> </ul> <p><strong>Step 3: Fix any visual issues found during testing</strong></p> <p>Address any spacing, color, or layout issues.</p> <p><strong>Step 4: Final commit</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nt">-A</span>
+git commit <span class="nt">-m</span> <span class="s2">"chore: final polish and integration fixes for redesign"</span>
+</code></pre></div></div> <hr> <h2 id="execution-notes">Execution Notes</h2> <ul> <li> <strong>Do NOT change the Jekyll framework</strong> — all changes are CSS/HTML/Liquid templates</li> <li> <strong>Preserve all existing content</strong> — we’re changing presentation, not content</li> <li> <strong>Test dark mode at every step</strong> — easy to break with new styles</li> <li> <strong>Mobile responsiveness matters</strong> — test at 375px width too</li> <li> <strong>Back up before starting</strong> — the git history is the backup, but commit frequently</li> </ul> <hr> </body></html>
