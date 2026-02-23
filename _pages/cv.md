@@ -1,9 +1,17 @@
 ---
-layout: cv
+layout: default
 permalink: /cv/
 title: cv
-nav: false
+nav: true
 nav_order: 4
-cv_pdf: example_pdf.pdf
-description: This is a description of the page. You can modify it in 'pages/_cv.md'. You can also change or remove the top pdf download button.
+description: Snehal Raj's CV
 ---
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }} <a href="{{ '/assets/pdf/resume.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a></h1>
+    <p class="post-description">{{ page.description }}</p>
+  </header>
+
+  <iframe src="{{ '/assets/pdf/resume.pdf' | relative_url }}" width="100%" height="900px" style="border: none;"></iframe>
+</div>
