@@ -1,6 +1,30 @@
 ---
 ---
 
+@article{raj2026qgnn,
+  abbr={arXiv},
+  bibtex_show={true},
+  title={Scalable Message-Passing Quantum Graph Neural Networks in the Weisfeiler--Leman Hierarchy},
+  author={Raj, Snehal and Coyle, Brian and Monbroussou, L{\'e}o and Ferreira-Martins, Andr{\'e} J. and Farias, Renato M. S. and Kashefi, Elham},
+  journal={arXiv preprint arXiv:2606.26873},
+  year={2026},
+  html={https://arxiv.org/abs/2606.26873},
+  abstract={We show how a quantum graph neural network can be built to perform message passing, to be permutation equivariant, and to sit at a chosen level of the Weisfeiler--Leman hierarchy, the standard measure of how finely a model can tell graphs apart. Confining the dynamics to a particle-number subspace keeps the model trainable, and, as for classical graph networks, we pre-train on small graphs and deploy on larger ones with a readout whose cost stays low as the graph grows. We validate the framework in large-scale simulations of up to 56 qubits, on synthetic graphs that ordinary message passing cannot separate, on molecular property prediction, and on the travelling salesman problem.},
+  selected={true}
+}
+
+@article{coyle2026adaptive,
+  abbr={arXiv},
+  bibtex_show={true},
+  title={Adaptive Directional Gradients for Parameterised Quantum Circuits},
+  author={Coyle, Brian and Raj, Snehal and Umathe, Virag and Cherrat, El Amine and Kashefi, Elham},
+  journal={arXiv preprint arXiv:2606.09734},
+  year={2026},
+  html={https://arxiv.org/abs/2606.09734},
+  abstract={Training parameterised quantum circuits on hardware is bottlenecked by the measurement cost of gradient estimation, which under the parameter-shift rule scales linearly in the number of parameters. We propose a framework of forward gradient estimators that gives an unbiased gradient by averaging a tunable number of random directional derivatives, recovering SPSA, random coordinate descent, and the parameter-shift rule as limiting cases with no ancilla or controlled-gate overhead, and derive QUIVER, an adaptive measurement-frugal optimiser. Numerically, forward gradients train Hamming-weight-preserving orthogonal quantum neural networks with up to 60 qubits orders of magnitude more efficiently than the parameter-shift rule.},
+  selected={true}
+}
+
 @article{cherrat2023quantum,
   abbr={Quantum},
   bibtex_show={true},
