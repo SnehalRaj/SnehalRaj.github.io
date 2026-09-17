@@ -39,7 +39,7 @@ layout: default
         {% else %}
           {%- assign profile_image_class = "img-fluid rounded" -%}
         {% endif %}
-        {% include figure.html path=profile_image_path class=profile_image_class alt=page.profile.image cache_bust=true -%}
+        {% include figure.html path=profile_image_path class=profile_image_class alt=page.profile.image cache_bust=true eager=true -%}
       </div>
       {% endif %}
     </div>
