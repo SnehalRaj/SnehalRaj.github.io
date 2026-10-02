@@ -16,7 +16,7 @@ experience: true
 social: false
 ---
 
-Hi there! I am Snehal Raj, a CIFRE PhD Student at LIP6/CNRS - Sorbonne University and [QC Ware](https://www.qcware.com/), under [Prof. Elham Kashefi](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427) (academic supervisor) & [Dr. Brian Coyle](https://scholar.google.com/citations?user=zDZuloYAAAAJ&hl=en) (industry supervisor).
+Hi there! I am Snehal Raj, a CIFRE PhD Student at LIP6/CNRS - Sorbonne University and [QC Ware](https://www.qcware.com/), under [Prof. Elham Kashefi](https://www.lip6.fr/actualite/personnes-fiche.php?ident=P1427) (academic supervisor) & [Dr. Alejandro Perdomo-Ortiz](https://sites.google.com/view/aperdomoortiz) (industry supervisor).
 
 My thesis explores:
 - Theoretical study of quantum & quantum-inspired algorithms
